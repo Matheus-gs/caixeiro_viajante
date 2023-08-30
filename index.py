@@ -1,9 +1,8 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Problema do Caixeiro Viajante, modelo de solução: Força Bruta + Plano Cartesiano
-
 import itertools
 import math
-
+import matplotlib.pyplot as plt
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Calculo de distância baseada nas coordenadas de cada 
@@ -57,6 +56,21 @@ def caixeiro_viajante(cidades):
     return melhor_caminho, melhor_distancia, execucoes, complexidade
 
 
+def plot_melhor_caminho(cidades, caminho):
+    x = [cidades[cidade][0] for cidade in caminho]
+    y = [cidades[cidade][1] for cidade in caminho]
+    
+    # Adicione a primeira cidade ao final para fechar o ciclo
+    x.append(x[0])
+    y.append(y[0])
+    
+    plt.plot(x, y, marker='o')
+    plt.title('Caminho do Caixeiro Viajante')
+    plt.xlabel('Coordenada X')
+    plt.ylabel('Coordenada Y')
+    plt.grid(True)
+    plt.show()
+
 # # # # # # # # # # # # # # 
 # Coordenadas das cidades
 # 
@@ -88,3 +102,5 @@ print("Melhor caminho:", melhor_caminho)
 print("Melhor distância aproximada: ", round(melhor_distancia, 2))
 print("Total de execuções: ", execucoes)
 print("Complexidade: O(" + str(complexidade) + "!)")
+
+plot_melhor_caminho(cidades, melhor_caminho)

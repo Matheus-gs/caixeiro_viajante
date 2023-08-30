@@ -4,6 +4,25 @@ import itertools
 import math
 import matplotlib.pyplot as plt
 
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# Gerando gráfico para exibição dos caminhos percorridos
+def plot_melhor_caminho(cidades, caminho):
+    x = [cidades[cidade][0] for cidade in caminho]
+    y = [cidades[cidade][1] for cidade in caminho]
+    
+    # Adicione a primeira cidade ao final para fechar o ciclo
+    x.append(x[0])
+    y.append(y[0])
+    
+    plt.plot(x, y, marker='o')
+    plt.title('Caminho do Caixeiro Viajante')
+    plt.xlabel('Coordenada X')
+    plt.ylabel('Coordenada Y')
+    plt.grid(True)
+    plt.show()
+
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Calculo de distância baseada nas coordenadas de cada 
 # cidade utilizando a fórmula euclidiana para calcular 
@@ -54,22 +73,6 @@ def caixeiro_viajante(cidades):
             
 
     return melhor_caminho, melhor_distancia, execucoes, complexidade
-
-
-def plot_melhor_caminho(cidades, caminho):
-    x = [cidades[cidade][0] for cidade in caminho]
-    y = [cidades[cidade][1] for cidade in caminho]
-    
-    # Adicione a primeira cidade ao final para fechar o ciclo
-    x.append(x[0])
-    y.append(y[0])
-    
-    plt.plot(x, y, marker='o')
-    plt.title('Caminho do Caixeiro Viajante')
-    plt.xlabel('Coordenada X')
-    plt.ylabel('Coordenada Y')
-    plt.grid(True)
-    plt.show()
 
 # # # # # # # # # # # # # # 
 # Coordenadas das cidades
